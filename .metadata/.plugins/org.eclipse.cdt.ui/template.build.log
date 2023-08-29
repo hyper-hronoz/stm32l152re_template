@@ -1,0 +1,21 @@
+22:12:57 **** Incremental Build of configuration Debug for project template ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:112:12: warning: unused variable 'current_clock' [-Wunused-variable]
+  112 |   uint32_t current_clock = SystemCoreClock;
+      |            ^~~~~~~~~~~~~
+arm-none-eabi-gcc -o "template.elf" @"objects.list"   -mcpu=cortex-m3 -T"/home/hronoz/Documents/stm32projects/template/STM32L152RETx_CUBE_FLASH.ld" --specs=nosys.specs -Wl,-Map="template.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: template.elf
+ 
+arm-none-eabi-size   template.elf 
+arm-none-eabi-objdump -h -S  template.elf  > "template.list"
+   text	   data	    bss	    dec	    hex	filename
+   5780	     96	   1904	   7780	   1e64	template.elf
+Finished building: default.size.stdout
+ 
+Finished building: template.list
+ 
+
+22:12:58 Build Finished. 0 errors, 1 warnings. (took 526ms)
+

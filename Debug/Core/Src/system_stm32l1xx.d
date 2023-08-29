@@ -1,7 +1,7 @@
 Core/Src/system_stm32l1xx.o: ../Core/Src/system_stm32l1xx.c \
  ../Drivers/CMSIS/Device/ST/STM32L1xx/Include/stm32l1xx.h \
  ../Drivers/CMSIS/Device/ST/STM32L1xx/Include/stm32l152xe.h \
- ../Drivers/CMSIS/Include/core_cm3.h \
+ ../Drivers/CMSIS/Include/core_cm3.h ../Core/Inc/stdint.h \
  ../Drivers/CMSIS/Include/cmsis_version.h \
  ../Drivers/CMSIS/Include/cmsis_compiler.h \
  ../Drivers/CMSIS/Include/cmsis_gcc.h \
@@ -27,6 +27,7 @@ Core/Src/system_stm32l1xx.o: ../Core/Src/system_stm32l1xx.c \
 ../Drivers/CMSIS/Device/ST/STM32L1xx/Include/stm32l1xx.h:
 ../Drivers/CMSIS/Device/ST/STM32L1xx/Include/stm32l152xe.h:
 ../Drivers/CMSIS/Include/core_cm3.h:
+../Core/Inc/stdint.h:
 ../Drivers/CMSIS/Include/cmsis_version.h:
 ../Drivers/CMSIS/Include/cmsis_compiler.h:
 ../Drivers/CMSIS/Include/cmsis_gcc.h:

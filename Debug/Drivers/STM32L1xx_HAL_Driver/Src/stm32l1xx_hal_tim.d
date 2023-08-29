@@ -6,7 +6,7 @@ Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_tim.o: \
  ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_def.h \
  ../Drivers/CMSIS/Device/ST/STM32L1xx/Include/stm32l1xx.h \
  ../Drivers/CMSIS/Device/ST/STM32L1xx/Include/stm32l152xe.h \
- ../Drivers/CMSIS/Include/core_cm3.h \
+ ../Drivers/CMSIS/Include/core_cm3.h ../Core/Inc/stdint.h \
  ../Drivers/CMSIS/Include/cmsis_version.h \
  ../Drivers/CMSIS/Include/cmsis_compiler.h \
  ../Drivers/CMSIS/Include/cmsis_gcc.h \
@@ -32,6 +32,7 @@ Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_tim.o: \
 ../Drivers/CMSIS/Device/ST/STM32L1xx/Include/stm32l1xx.h:
 ../Drivers/CMSIS/Device/ST/STM32L1xx/Include/stm32l152xe.h:
 ../Drivers/CMSIS/Include/core_cm3.h:
+../Core/Inc/stdint.h:
 ../Drivers/CMSIS/Include/cmsis_version.h:
 ../Drivers/CMSIS/Include/cmsis_compiler.h:
 ../Drivers/CMSIS/Include/cmsis_gcc.h:
