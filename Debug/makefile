@@ -60,8 +60,8 @@ all: main-build
 main-build: template.elf secondary-outputs
 
 # Tool invocations
-template.elf template.map: $(OBJS) $(USER_OBJS) /home/hronoz/Documents/stm32projects/template/STM32L152RETx_CUBE_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "template.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"/home/hronoz/Documents/stm32projects/template/STM32L152RETx_CUBE_FLASH.ld" --specs=nosys.specs -Wl,-Map="template.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+template.elf template.map: $(OBJS) $(USER_OBJS) C:\stm32projects\register_based_uart\stm32l152re_template\STM32L152RETx_CUBE_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "template.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\stm32projects\register_based_uart\stm32l152re_template\STM32L152RETx_CUBE_FLASH.ld" --specs=nosys.specs -Wl,-Map="template.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

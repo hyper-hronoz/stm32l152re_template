@@ -75,17 +75,9 @@ void configure_GPIO() {
 }
 
 void configure_UART() {
-  uint32_t baud_rate = 115200;
-  uint16_t uartdiv = SystemCoreClock / (baud_rate);
-  USART2->BRR = (((uartdiv / 16) << USART_BRR_DIV_Mantissa_Pos) |
-			   ((uartdiv % 16) << USART_BRR_DIV_Fraction_Pos));
- //  uint32_t uartdiv = SystemCoreClock / (baud_rate * 16);
- //  USART2->BRR = (
- //    (uartdiv << 11) |
-	//    (8 << 0)
-	// );
-
-
+  // USART2->BRR = (0x8B); // 57600
+  USART2->BRR = (0x45); // 115200
+  // USART2->BRR = (0x23); // 460800
 
   USART2->CR1 |= USART_CR1_RE | USART_CR1_TE | USART_CR1_UE;
 }
