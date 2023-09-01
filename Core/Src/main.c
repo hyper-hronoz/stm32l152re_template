@@ -26,6 +26,8 @@ int get_char() {
   return USART2->DR;
 }
 
+void RCC_configure_TIM10() { RCC->APB2ENR |= RCC_APB2ENR_TIM10EN; }
+
 void configure_RCC() {
 
   RCC->CR |= (0b1 << 16); // enabling HSE
@@ -61,6 +63,8 @@ void configure_RCC() {
   RCC->AHBENR |= RCC_AHBENR_GPIOAEN;
   RCC->APB1ENR |= RCC_APB1ENR_USART2EN;
 
+  RCC_configure_TIM10();
+
   SystemCoreClockUpdate();
 }
 
@@ -82,23 +86,49 @@ void configure_UART() {
   USART2->CR1 |= USART_CR1_RE | USART_CR1_TE | USART_CR1_UE;
 }
 
+void configure_timers() {
+  SystemCoreClockUpdate();
+  uint32_t required_timer_clock = 1000000;
+
+  uint32_t PSC_value = (required_timer_clock / SystemCoreClock) - 1;
+  // TIM10->PSC = PSC_value; // formula sysClock / (PSC + 1) as a result 1 MHz
+  TIM10->PSC = 7; // formula sysClock / (PSC + 1) as a result 1 MHz
+
+  TIM10->ARR = 999; // from 0 to 999 == 1000
+
+  TIM10->CR1 = TIM_CR1_CEN; // enable counter
+}
+
+void delay(uint32_t ms) {
+  for (uint32_t i = 0; i < ms; i++) {
+    TIM10->CNT = 0;
+
+    while (!(TIM10->SR & TIM_SR_UIF)) {
+    }
+
+    TIM10->SR &= ~TIM_SR_UIF;
+  }
+}
+
 int main(void) {
   // ClockInit();
   configure_RCC();
   configure_GPIO();
   configure_UART();
+  configure_timers();
 
   char tempConverterToString[32] = {0};
 
   uint32_t _clock = HAL_RCC_GetSysClockFreq();
 
-  uint32_t test = 32000000;
-  sprintf(tempConverterToString, "%ld %ld %ld \n\r", SystemCoreClock, _clock,
-          test);
+  sprintf(tempConverterToString, "%ld %ld \n\r", SystemCoreClock, _clock);
 
   transmit_string("there is no\n\r");
+  delay(10000);
   transmit_string("emotion only\n\r");
+  delay(10000);
   transmit_string("fucking peace\n\r");
+  delay(10000);
   transmit_string(tempConverterToString);
 
   uint32_t current_clock = SystemCoreClock;

@@ -1,7 +1,10 @@
 ../Core/Src/main.c:9:5:transmit_char	2
 ../Core/Src/main.c:16:5:transmit_string	2
 ../Core/Src/main.c:23:5:get_char	2
-../Core/Src/main.c:29:6:configure_RCC	5
-../Core/Src/main.c:67:6:configure_GPIO	1
-../Core/Src/main.c:77:6:configure_UART	1
-../Core/Src/main.c:85:5:main	2
+../Core/Src/main.c:29:6:RCC_configure_TIM10	1
+../Core/Src/main.c:31:6:configure_RCC	5
+../Core/Src/main.c:71:6:configure_GPIO	1
+../Core/Src/main.c:81:6:configure_UART	1
+../Core/Src/main.c:89:6:configure_timers	1
+../Core/Src/main.c:102:6:delay	3
+../Core/Src/main.c:113:5:main	2
